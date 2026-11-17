@@ -1,0 +1,17 @@
+{
+  "name": "com.iamacid.dialogue",
+  "version": "0.1.0",
+  "displayName": "Dialogue",
+  "description": "A JSON-based dialogue runtime for Unity.",
+  "unity": "2022.3",
+  "dependencies": {
+    "com.unity.nuget.newtonsoft-json": "3.2.1"
+  },
+  "samples": [
+    {
+      "displayName": "Dialogue Examples",
+      "description": "Example dialogue JSON files.",
+      "path": "Samples~/Dialogue Examples"
+    }
+  ]
+}

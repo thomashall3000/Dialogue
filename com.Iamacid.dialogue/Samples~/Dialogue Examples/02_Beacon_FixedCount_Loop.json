@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "dialogueId": "sample-lighthouse-beacon-loop",
+  "dialogueSettings": {
+    "defaultResponsePresentation": "Immediate"
+  },
+  "nodes": [
+    {
+      "nodeType": "Entry",
+      "nodeId": "beacon-entry"
+    },
+    {
+      "nodeType": "CharacterLine",
+      "nodeId": "beacon-intro",
+      "characterId": "lighthouse-keeper",
+      "text": "The beacon needs three calibration pulses."
+    },
+    {
+      "nodeType": "Loop",
+      "nodeId": "beacon-loop",
+      "mode": "FixedCount",
+      "iterationCount": 3,
+      "entryNodeId": "beacon-pulse",
+      "childNodeIds": [
+        "beacon-pulse"
+      ]
+    },
+    {
+      "nodeType": "CharacterLine",
+      "nodeId": "beacon-pulse",
+      "characterId": "lighthouse-keeper",
+      "text": "Sending calibration pulse..."
+    },
+    {
+      "nodeType": "CharacterLine",
+      "nodeId": "beacon-complete",
+      "characterId": "lighthouse-keeper",
+      "text": "Calibration complete. The lighthouse is shining again."
+    },
+    {
+      "nodeType": "End",
+      "nodeId": "beacon-end"
+    }
+  ],
+  "connections": [
+    {
+      "sourceNodeId": "beacon-entry",
+      "sourcePortId": "next",
+      "targetNodeId": "beacon-intro"
+    },
+    {
+      "sourceNodeId": "beacon-intro",
+      "sourcePortId": "next",
+      "targetNodeId": "beacon-loop"
+    },
+    {
+      "sourceNodeId": "beacon-pulse",
+      "sourcePortId": "next",
+      "targetNodeId": "beacon-loop"
+    },
+    {
+      "sourceNodeId": "beacon-loop",
+      "sourcePortId": "next",
+      "targetNodeId": "beacon-complete"
+    },
+    {
+      "sourceNodeId": "beacon-complete",
+      "sourcePortId": "next",
+      "targetNodeId": "beacon-end"
+    }
+  ]
+}

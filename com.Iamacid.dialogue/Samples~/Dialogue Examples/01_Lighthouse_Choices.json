@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "dialogueId": "sample-lighthouse-choice",
+  "dialogueSettings": {
+    "defaultResponsePresentation": "Immediate"
+  },
+  "nodes": [
+    {
+      "nodeType": "Entry",
+      "nodeId": "lighthouse-entry"
+    },
+    {
+      "nodeType": "CharacterLine",
+      "nodeId": "lighthouse-intro",
+      "characterId": "lighthouse-keeper",
+      "text": "The lighthouse lens is failing. Will you help me repair it?"
+    },
+    {
+      "nodeType": "Choice",
+      "nodeId": "lighthouse-choice",
+      "characterId": "traveller",
+      "settingsOverride": "Immediate",
+      "responses": [
+        {
+          "responseId": "agree-to-help",
+          "text": "Of course. Show me what needs fixing."
+        },
+        {
+          "responseId": "decline-to-help",
+          "text": "I cannot stay tonight."
+        }
+      ]
+    },
+    {
+      "nodeType": "CharacterLine",
+      "nodeId": "lighthouse-yes",
+      "characterId": "lighthouse-keeper",
+      "text": "Thank you. With your help, the ships will find their way home."
+    },
+    {
+      "nodeType": "CharacterLine",
+      "nodeId": "lighthouse-no",
+      "characterId": "lighthouse-keeper",
+      "text": "I understand. Travel safely, and keep an eye on the shore."
+    },
+    {
+      "nodeType": "End",
+      "nodeId": "lighthouse-end"
+    }
+  ],
+  "connections": [
+    {
+      "sourceNodeId": "lighthouse-entry",
+      "sourcePortId": "next",
+      "targetNodeId": "lighthouse-intro"
+    },
+    {
+      "sourceNodeId": "lighthouse-intro",
+      "sourcePortId": "next",
+      "targetNodeId": "lighthouse-choice"
+    },
+    {
+      "sourceNodeId": "lighthouse-choice",
+      "sourcePortId": "agree-to-help",
+      "targetNodeId": "lighthouse-yes"
+    },
+    {
+      "sourceNodeId": "lighthouse-choice",
+      "sourcePortId": "decline-to-help",
+      "targetNodeId": "lighthouse-no"
+    },
+    {
+      "sourceNodeId": "lighthouse-yes",
+      "sourcePortId": "next",
+      "targetNodeId": "lighthouse-end"
+    },
+    {
+      "sourceNodeId": "lighthouse-no",
+      "sourcePortId": "next",
+      "targetNodeId": "lighthouse-end"
+    }
+  ]
+}
